@@ -1,22 +1,32 @@
 # windows-setup-tool
 
 ## requirements
+
 Requires at least chocolatey. It is a popular package manager for Windows.
-> install with powershell : ``Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))``
+
+**install with powershell** 
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
 
 
 ## load
-Open a Powershell prompt with **administrative permissions**. The setup tool does not work yet for 
 
-``git clone https://github.com/JeanMGirard/windows-setup-tool.git``  
-``import-module ./windows-setup-tool/winSetup.psm1``
+Open a Powershell prompt with **administrative permissions**. The setup tool does not work yet for normal users
+
+```powershell
+git clone https://github.com/JeanMGirard/windows-setup-tool.git
+import-module ./windows-setup-tool/winSetup.psm1
+```
 
 ## configure the setup
+
 Open the ``packages.ini`` file inside the repo. 
 A lot of packages are already suggested, but you can add any missing ones under the correct section (see below).
 
 In the file:
-```
+
+```ini
 [choco_pkgs]  # Chocolatey packages
 conemu=             # Does not change anything
 git=True            # Install git if not already installed
@@ -27,13 +37,13 @@ It means... you can keep the desired state of your pc in it or you can split it 
 Only have to run the function after a change 
 
 ## Start
+
 ```powershell
-$file = "./packages.ini" 
+$file = "./windows-setup-tool/packages.ini" 
 
-# All section
-set-allPackages $file
+set-allPackages $file   # All sections
 
-# Or any of :
+# Or one of :
 set-ChocoPackages $file
 set-PsPackages    $file
 set-PsModules     $file
@@ -58,5 +68,6 @@ set-WinOptionalFeatures $file
 ## Resources 
 
 ### Find packages  
+
 - on [Chocolatey](https://chocolatey.org/packages) 
 
