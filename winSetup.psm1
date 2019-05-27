@@ -1,4 +1,4 @@
-Import-Module ./winConfig.psm1
+Import-Module ${PSScriptRoot}/winConfig.psm1
 # Remove-Module -Name "WinSetup"
 
 
@@ -83,16 +83,13 @@ function set-ChocoPackages{
   $uninstall = ""
 
   Foreach ($key in $packages.keys){
-    $key = $key.toLower()
-
-    if    (($packages[$key] -eq $true)){ $install = $install + ' ' + $key }
+    if    (($packages[$key] -eq $true)){ 
+      Choco install --limit-output -y $key
+    }
     elseif(($packages[$key] -eq $false)) {
-      $uninstall = $uninstall + ' ' + $key
+      Choco uninstall --limit-output -y $key
     }
   }
-
-  if($install.length -gt 0)  {   ( Choco install   -y ($install    | Out-String) ) };
-  if($uninstall.length -gt 0){   ( Choco uninstall -y ($uninstall  | Out-String) ) };
 }
 function set-AtomPackages{
   param([parameter(position=0)][String]$file, [parameter(position=1)][String]$ctg)
