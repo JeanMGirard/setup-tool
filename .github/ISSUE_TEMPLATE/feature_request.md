@@ -2,15 +2,16 @@
 name: Feature request
 about: Suggest an idea for this project
 title: "[FEATURE]"
-labels: feature
+labels: feature, new
 assignees: ''
 
 ---
 
 **Feature request**
-Name: 
-Summary: 
-Tags:
+Name:  
+Summary:  
+Tags: 
+
 --------------------------------------------------------------
 
 **Describe the solution you'd like**
