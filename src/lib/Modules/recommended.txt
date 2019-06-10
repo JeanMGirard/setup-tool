@@ -1,0 +1,12 @@
+Jump-Location - Powershell cd that reads your mind. Autojump implementation for powershell.
+thefuck - Magnificent app which corrects your previous console command (by typing fuck).
+posh-with - Command prefixing for continuous workflow using a single tool.
+posh-git
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+[submodule ".profile"]
+	path = .profile
+	url = https://gist.github.com/62371f7eb9e90ad84b5e68c7a0dde0db.git
