@@ -12,38 +12,40 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 
 ## load
 
-Open a Powershell prompt with **administrative permissions**. The setup tool does not work yet for normal users
+Open a Powershell prompt with **administrative permissions**. 
 
 ```powershell
 git clone https://github.com/JeanMGirard/windows-setup-tool.git
 import-module ./windows-setup-tool/winSetup.psm1
 ```
 
-## configure the setup
+## configure the script
 
 Open the ``packages.ini`` file inside the repo. 
 A lot of packages are already suggested, but you can add any missing ones under the correct section (see below).
 
-In the file:
+**Syntax:**
 
 ```ini
-[choco_pkgs]  # Chocolatey packages
-conemu=             # Does not change anything
-git=True            # Install git if not already installed
-python3=False       # Uninstall python3 if already installed
+[choco_pkgs]        # === Chocolatey packages ===
+conemu=             # Skipped
+git=True            # Install git (if not already installed)
+python3=False       # Uninstall python
 ```
+ 
 
-It means... you can keep the desired state of your pc in it or you can split it in how many files you'd like ! 
-Only have to run the function after a change 
-
-## Start
+## Start setup
 
 ```powershell
 $file = "./windows-setup-tool/packages.ini" 
 
 set-allPackages $file   # All sections
+```
 
-# Or one of :
+Or, if you only need to update a specific type of package.
+
+```powershell
+# one of
 set-ChocoPackages $file
 set-PsPackages    $file
 set-PsModules     $file
